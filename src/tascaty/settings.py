@@ -41,15 +41,15 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     # projecct apps
-    'core.apps.CoreConfig',
     'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
+
 ]
 
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
 
