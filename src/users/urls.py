@@ -6,6 +6,7 @@ from users import views
 
 router = DefaultRouter()  # trailing_slash=False
 router.register('users', views.UserListApi, basename='usersviewset')
+router.register('teamleads', views.TeamLeadsApi, basename='tlviewset')
 
 
 urlpatterns = [

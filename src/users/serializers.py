@@ -1,6 +1,9 @@
-"""third party imports."""
+"""django imports."""
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from users.models import User
+from users.models import TeamLead
+
+User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         model = User
         fields = ('id', 'username', 'email', 'password', 'first_name',
-                  'last_name', 'password', 'is_team_lead', 'is_manager', 'is_active')
+                  'last_name', 'password', 'approver', 'is_team_lead')
         extra_kwargs = {
             'id': {'read_only': True},
             'password': {'write_only': True,
@@ -33,3 +36,16 @@ class UserSerializer(serializers.ModelSerializer):
             password = validated_data.pop('password')
             instance.set_password(password)
         return super().update(instance, validated_data)
+
+
+class TeamLeadSerializer(serializers.ModelSerializer):
+    """Serializer for TeamLead api."""
+
+    class Meta:
+        """defines meta details for parent class object."""
+
+        model = TeamLead
+        fields = ('id', 'user_name', 'fullname')
+        extra_kwargs = {
+            'id': {'read_only': True},
+        }

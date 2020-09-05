@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     # projecct apps
-    'core.apps.CoreConfig',
     'users.apps.UsersConfig',
+    'core.apps.CoreConfig',
+
 ]
 
 
