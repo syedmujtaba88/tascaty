@@ -52,4 +52,4 @@ class ActivityTracker(models.Model):
 
     def __str__(self):
         """Human readable return string."""
-        return self.activity_name
+        return self.activity_name.activity_name

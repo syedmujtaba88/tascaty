@@ -65,29 +65,11 @@ class ActivityTrackerSerializer(serializers.ModelSerializer):
         """defines meta details for parent class object."""
 
         model = ActivityTracker
-        fields = ('id', 'username', 'approver', 'activity_name', 'system_name',
-                  'client_name', 'status', 'date', 'hours', 'minutes', 'no_of_records', 'project', 'comments')
+        fields = ('id', 'username', 'approver', 'status', 'activity_name', 'system_name',
+                  'client_name', 'date', 'hours', 'minutes', 'no_of_records', 'project', 'comments')
         extra_kwargs = {
             'id': {'read_only': True},
+            'username': {'read_only': True},
+            'approver': {'read_only': True},
+            'status': {'required': False}
         }
-
-
-'''
-    def create(self, validated_data):
-        """Add a new user and return auth token."""
-        """username = validated_data.pop('username')
-        email = validated_data.pop('email')
-        password = validated_data.pop('password')
-        user = User.objects.create_user(
-            username, email, password, **validated_data)
-        return user"""
-        pass
-
-    def update(self, instance, validated_data):
-        """Handle updating user account."""
-        """if 'password' in validated_data:
-            password = validated_data.pop('password')
-            instance.set_password(password)
-        return super().update(instance, validated_data)"""
-        pass
-'''
