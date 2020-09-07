@@ -64,3 +64,7 @@ class ActivityTrackerApi(viewsets.ModelViewSet):
                             status=ActivityState.objects.get(pk=3))
         serializer.save(username=self.request.user,
                         approver=self.request.user.approver)
+
+    def get_queryset(self):
+        """Return the list only for authenticated user."""
+        return self.queryset.filter(username=self.request.user) | self.queryset.filter(approver=self.request.user.approver)  # noqa
